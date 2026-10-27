@@ -1,4 +1,29 @@
-<<<<<<< HEAD
+Aplicativo mobile educativo sobre o Kamasutra, desenvolvido como trabalho da disciplina de **Programação de Dispositivos Móveis** do curso de **Engenharia da Computação**.
+
+## Sobre o projeto
+O FHOSutra apresenta o Kamasutra como um guia de autoconhecimento e conexão em casal, indo além das posições. O app monta um perfil a partir de um questionário e recomenda posições para quem está começando.
+
+## Funcionalidades
+- **Questionário de perfil:** perguntas sobre estilo, experiência e flexibilidade, com recomendação de 3 posições iniciais.
+- **Início:** boas-vindas e recomendações do dia.
+- **Explorar:** catálogo de posições com filtros por nome, dificuldade, flexibilidade e objetivo (carinho, intimidade, aventura, entre outros).
+- **Detalhes de cada posição:** como executar, dicas para facilitar, objetivos e posições parecidas.
+- **Roleta da sorte:** sorteia uma posição e oferece um timer de 5, 10, 15 ou 20 minutos, ou tempo personalizado.
+- **O que é o Kamasutra?:** origem, autor e significado da obra.
+
+## Tecnologias
+HTML, CSS e JavaScript, com os dados das posições e do questionário em arquivos JSON. Para gerar o app Android e iOS, usa-se o Capacitor.
+
+## Como executar
+1. Abra a pasta do projeto no VS Code.
+2. Instale a extensão **Live Server**.
+3. Clique com o botão direito em `www/index.html` e escolha **Open with Live Server**.
+
+O passo a passo para instalar no celular (Android e iPhone) está no arquivo `README.md` do projeto.
+
+## Aviso
+Conteúdo educativo, destinado a maiores de 18 anos.
+
 # FHOSutra – app mobile (HTML + CSS + JS + JSON)
 
 ```
