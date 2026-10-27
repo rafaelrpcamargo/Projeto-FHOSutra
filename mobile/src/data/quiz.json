@@ -1,0 +1,16 @@
+[
+  { "texto": "Na intimidade, você se considera mais dominante ou mais receptivo(a) às ideias do outro?", "eixo": "controle",
+    "opcoes": [ { "texto": "Dominante: gosto de conduzir", "valor": 1 }, { "texto": "Equilibrado(a): depende do momento", "valor": 0.5 }, { "texto": "Receptivo(a): gosto de seguir", "valor": 0 } ] },
+  { "texto": "Seu estilo é mais carinhoso ou mais selvagem?", "eixo": "intensidade",
+    "opcoes": [ { "texto": "Carinhoso(a) e delicado(a)", "valor": 0 }, { "texto": "Um pouco de cada", "valor": 0.5 }, { "texto": "Selvagem e intenso(a)", "valor": 1 } ] },
+  { "texto": "Você se considera iniciante ou experiente?", "eixo": "dificuldade",
+    "opcoes": [ { "texto": "Iniciante: estou começando", "valor": 0 }, { "texto": "Já tenho alguma vivência", "valor": 0.5 }, { "texto": "Experiente", "valor": 1 } ] },
+  { "texto": "Como está sua flexibilidade e condicionamento físico?", "eixo": "flexibilidade",
+    "opcoes": [ { "texto": "Pouca: prefiro conforto", "valor": 0 }, { "texto": "Média", "valor": 0.5 }, { "texto": "Boa: topo desafios", "valor": 1 } ] },
+  { "texto": "Qual é o clima ideal para você?", "eixo": "intensidade",
+    "opcoes": [ { "texto": "Velas, música suave e conversa", "valor": 0 }, { "texto": "Leve e divertido", "valor": 0.5 }, { "texto": "Aventureiro e cheio de energia", "valor": 1 } ] },
+  { "texto": "Quem costuma tomar a iniciativa?", "eixo": "controle",
+    "opcoes": [ { "texto": "Eu", "valor": 1 }, { "texto": "Nós dois", "valor": 0.5 }, { "texto": "Meu(minha) parceiro(a)", "valor": 0 } ] },
+  { "texto": "Quanto você curte experimentar coisas novas?", "eixo": "dificuldade",
+    "opcoes": [ { "texto": "Prefiro algo simples e seguro", "valor": 0 }, { "texto": "Topo experimentar aos poucos", "valor": 0.5 }, { "texto": "Quero desafios", "valor": 1 } ] }
+]
