@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FHOSutra – app mobile (HTML + CSS + JS + JSON)
 
 ```
@@ -45,3 +46,7 @@ npx cap open android      # abre o Android Studio: ligue o celular com depuraç�
 - **Cores:** variáveis no começo de `css/style.css`.
 - **Objetivos:** cada posição tem `"objetivos": ["Carinho", "Intimidade"]` no JSON. Eles viram tags na tela da posição e os botões de filtro da aba Explorar (novos objetivos aparecem sozinhos).
 - **Ordem das abas e telas:** menu inferior em `index.html` (`<nav>`). O botão ← Voltar é controlado por `voltar()` em `js/app.js`.
+=======
+# Projeto-Aventura-Ocidental
+Trabalho de Programação Mobile do curso de Engenharia da Computação em andamento.
+>>>>>>> 56e53e0571e2d3ddbc01018a91f6ec7f624957ec
