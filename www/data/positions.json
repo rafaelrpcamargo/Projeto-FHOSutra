@@ -1,0 +1,269 @@
+[
+  {
+    "id": "conchinha",
+    "nome": "Conchinha",
+    "icone": "🥄",
+    "imagem": "",
+    "dificuldade": 1,
+    "flexibilidade": 1,
+    "controle": 0.3,
+    "intensidade": 0,
+    "descricao": "Duas pessoas deitadas de lado, voltadas para o mesmo lado, com o corpo de uma encaixado nas costas da outra. É a posição mais íntima e relaxada: favorece o abraço, o carinho e o ritmo lento.",
+    "como": "1) Deitem de lado, uma atrás da outra. 2) A pessoa de trás se aproxima e abraça a da frente pela cintura. 3) Quem está na frente dobra levemente os joelhos e inclina o quadril para trás. 4) Ajustem a distância até ambos ficarem confortáveis e respirem no mesmo ritmo.",
+    "dicas": [
+      "Um travesseiro entre os joelhos alivia o quadril.",
+      "Cama ou sofá largo funcionam bem.",
+      "Um braço sob o travesseiro evita dormência."
+    ],
+    "parecidas": [
+      "tesoura",
+      "lotus"
+    ],
+    "objetivos": [
+      "Carinho",
+      "Intimidade",
+      "Afeto",
+      "Proximidade",
+      "Relaxamento"
+    ]
+  },
+  {
+    "id": "lotus",
+    "nome": "Lótus",
+    "icone": "🪷",
+    "imagem": "",
+    "dificuldade": 1,
+    "flexibilidade": 2,
+    "controle": 0.5,
+    "intensidade": 0.1,
+    "descricao": "Sentados frente a frente e abraçados, com as pernas de uma pessoa ao redor da outra. Clássica do Kama Sutra, valoriza o contato visual, o beijo e a respiração sincronizada.",
+    "como": "1) Uma pessoa senta com as pernas cruzadas ou dobradas. 2) A outra senta de frente, apoiando as pernas ao redor do corpo do parceiro(a). 3) Abracem-se, encostem as testas e movam-se devagar, em balanço.",
+    "dicas": [
+      "Sentar sobre uma almofada firme eleva o quadril.",
+      "Encostar as costas na cabeceira ou na parede diminui o esforço.",
+      "Falta flexibilidade? Mantenha as pernas esticadas ao lado em vez de cruzadas."
+    ],
+    "parecidas": [
+      "cadeira",
+      "conchinha"
+    ],
+    "objetivos": [
+      "Intimidade",
+      "Conexão",
+      "Romance",
+      "Proximidade"
+    ]
+  },
+  {
+    "id": "missionario",
+    "nome": "Missionário",
+    "icone": "🛏️",
+    "imagem": "",
+    "dificuldade": 1,
+    "flexibilidade": 1,
+    "controle": 0.6,
+    "intensidade": 0.3,
+    "descricao": "Uma pessoa deitada de costas e a outra por cima, frente a frente. É a base de muitas variações e ótima para iniciantes: permite beijar, olhar nos olhos e ajustar o ritmo com facilidade.",
+    "como": "1) Quem fica por baixo deita de costas e dobra os joelhos. 2) A outra pessoa se apoia nos antebraços ou nas mãos, sem descarregar o peso. 3) Ajustem o ângulo do quadril até achar o conforto e combinem o ritmo.",
+    "dicas": [
+      "Travesseiro sob o quadril de quem está embaixo muda o ângulo.",
+      "Apoiar-se nos cotovelos poupa os punhos.",
+      "Colchão firme dá mais estabilidade."
+    ],
+    "parecidas": [
+      "cavalgada",
+      "borboleta",
+      "arco"
+    ],
+    "objetivos": [
+      "Carinho",
+      "Intimidade",
+      "Afeto",
+      "Contato visual"
+    ]
+  },
+  {
+    "id": "cavalgada",
+    "nome": "Cavalgada",
+    "icone": "🐎",
+    "imagem": "",
+    "dificuldade": 1,
+    "flexibilidade": 1,
+    "controle": 0.9,
+    "intensidade": 0.6,
+    "descricao": "Uma pessoa deitada de costas e a outra sentada por cima, de frente. Quem está por cima controla ritmo, profundidade e ângulo, ideal para quem gosta de conduzir.",
+    "como": "1) Quem fica por baixo deita com as costas bem apoiadas. 2) A outra pessoa ajoelha com uma perna de cada lado do quadril. 3) Apoie as mãos no peito ou nas mãos do parceiro(a) e incline o tronco para frente ou para trás para variar.",
+    "dicas": [
+      "Segurar as mãos do parceiro(a) dá apoio extra.",
+      "Cansou? Incline-se para frente e apoie as mãos ao lado do corpo.",
+      "Faça pausas: as coxas cansam rápido."
+    ],
+    "parecidas": [
+      "missionario",
+      "cadeira"
+    ],
+    "objetivos": [
+      "Controle",
+      "Diversão",
+      "Aventura"
+    ]
+  },
+  {
+    "id": "borboleta",
+    "nome": "Borboleta",
+    "icone": "🦋",
+    "imagem": "",
+    "dificuldade": 2,
+    "flexibilidade": 2,
+    "controle": 0.5,
+    "intensidade": 0.5,
+    "descricao": "Uma pessoa deita de costas na beira da cama, com o quadril na borda e as pernas elevadas; a outra fica em pé ou ajoelhada à frente. A diferença de altura facilita o ângulo e deixa as mãos livres para carícias.",
+    "como": "1) Quem deita posiciona o quadril na ponta da cama, com as pernas apoiadas no peito ou nos ombros do parceiro(a). 2) A outra pessoa fica em pé ou ajoelhada, de frente, segurando a cintura ou as coxas. 3) Ajustem a altura com almofadas até ficar confortável.",
+    "dicas": [
+      "Travesseiro sob a lombar e o quadril evita desconforto.",
+      "Cama muito alta? Fique ajoelhado(a) sobre um tapete macio.",
+      "Pernas nos ombros exigem flexibilidade: comece com os pés apoiados na cama."
+    ],
+    "parecidas": [
+      "missionario",
+      "arco",
+      "tesoura"
+    ],
+    "objetivos": [
+      "Variedade",
+      "Aventura",
+      "Diversão"
+    ]
+  },
+  {
+    "id": "cachorrinho",
+    "nome": "Cachorrinho",
+    "icone": "🐕",
+    "imagem": "",
+    "dificuldade": 2,
+    "flexibilidade": 1,
+    "controle": 0.8,
+    "intensidade": 0.9,
+    "descricao": "Uma pessoa apoiada nas mãos e nos joelhos e a outra atrás, ajoelhada. É uma posição de energia alta, que dá liberdade de movimento e permite um ritmo mais intenso.",
+    "como": "1) Apoie mãos e joelhos alinhados com ombros e quadril. 2) A outra pessoa se ajoelha atrás, segurando a cintura. 3) Para mais conforto, apoie os antebraços ou a cabeça em travesseiros.",
+    "dicas": [
+      "Almofada sob os joelhos protege as articulações.",
+      "Antebraços sobre travesseiros aliviam os punhos.",
+      "Combinem um sinal (palavra ou toque) para pedir pausa ou mudar a intensidade."
+    ],
+    "parecidas": [
+      "parede",
+      "borboleta"
+    ],
+    "objetivos": [
+      "Selvagem",
+      "Intensidade",
+      "Aventura"
+    ]
+  },
+  {
+    "id": "cadeira",
+    "nome": "A Cadeira",
+    "icone": "🪑",
+    "imagem": "",
+    "dificuldade": 1,
+    "flexibilidade": 1,
+    "controle": 0.5,
+    "intensidade": 0.4,
+    "descricao": "Uma pessoa senta em uma cadeira firme (ou na beira do sofá) e a outra senta em seu colo, de frente ou de costas. É estável, simples e ótima para variar sem sair do lugar.",
+    "como": "1) Escolha uma cadeira estável, sem rodinhas e sem braços, ou a beira de uma cama firme. 2) A outra pessoa senta no colo, de frente (abraço) ou de costas. 3) Apoiem os pés no chão e usem as mãos nos ombros ou na cintura para conduzir o movimento.",
+    "dicas": [
+      "Um tapete evita que a cadeira deslize.",
+      "Uma almofada no encosto dá conforto às costas.",
+      "Prefira superfícies firmes e estáveis."
+    ],
+    "parecidas": [
+      "lotus",
+      "cavalgada"
+    ],
+    "objetivos": [
+      "Proximidade",
+      "Diversão",
+      "Variedade"
+    ]
+  },
+  {
+    "id": "tesoura",
+    "nome": "Tesoura",
+    "icone": "✂️",
+    "imagem": "",
+    "dificuldade": 2,
+    "flexibilidade": 2,
+    "controle": 0.4,
+    "intensidade": 0.5,
+    "descricao": "Duas pessoas deitadas de lado, de frente uma para a outra, com as pernas entrelaçadas como as lâminas de uma tesoura. Muito contato corporal e movimentos suaves e controlados.",
+    "como": "1) Deitem de lado, de frente, aproximando os quadris. 2) Entrelacem as pernas: a de cima de cada um passa sobre a perna do outro. 3) Segurem-se pelos braços e balancem devagar.",
+    "dicas": [
+      "Um travesseiro sob a cabeça mantém o pescoço alinhado.",
+      "Pequenos ajustes de distância mudam todo o conforto.",
+      "Alongue quadris e coxas antes para evitar câimbras."
+    ],
+    "parecidas": [
+      "conchinha",
+      "borboleta"
+    ],
+    "objetivos": [
+      "Proximidade",
+      "Afeto",
+      "Variedade"
+    ]
+  },
+  {
+    "id": "parede",
+    "nome": "Apoio na Parede",
+    "icone": "🧱",
+    "imagem": "",
+    "dificuldade": 3,
+    "flexibilidade": 2,
+    "controle": 0.8,
+    "intensidade": 0.9,
+    "descricao": "Em pé, com uma pessoa apoiada de costas na parede e a outra à frente. Exige equilíbrio, força nas pernas e confiança, mas traz energia e ousadia.",
+    "como": "1) Escolha uma parede lisa e um piso antiderrapante. 2) Quem se apoia encosta as costas na parede, com os pés firmes no chão. 3) A outra pessoa se aproxima, segura a cintura e flexiona levemente os joelhos. 4) Comecem sempre com os dois em pé; evitem levantar o peso do parceiro(a) sem preparo.",
+    "dicas": [
+      "Um degrau ou banquinho baixo para apoiar o pé diminui o esforço.",
+      "Tapete antiderrapante evita escorregões.",
+      "Pare ao sentir tontura ou dor nas pernas."
+    ],
+    "parecidas": [
+      "cachorrinho",
+      "cadeira"
+    ],
+    "objetivos": [
+      "Selvagem",
+      "Intensidade",
+      "Desafio físico",
+      "Aventura"
+    ]
+  },
+  {
+    "id": "arco",
+    "nome": "Arco",
+    "icone": "🏹",
+    "imagem": "",
+    "dificuldade": 3,
+    "flexibilidade": 3,
+    "controle": 0.3,
+    "intensidade": 0.7,
+    "descricao": "Quem fica por baixo deita de costas e eleva o quadril formando um arco suave, apoiado nos pés e nos ombros; a outra pessoa se ajoelha à frente e sustenta o quadril. Exige flexibilidade e força no abdômen e nas costas.",
+    "como": "1) Deite de costas, com joelhos dobrados e pés firmes no colchão. 2) Eleve o quadril contraindo abdômen e glúteos, mantendo a coluna em arco suave, sem forçar. 3) A outra pessoa se ajoelha à frente e segura o quadril ou a lombar para dividir o peso. 4) Desça devagar ao sentir cansaço.",
+    "dicas": [
+      "Um travesseiro firme sob a lombar faz o apoio no lugar do esforço.",
+      "Aqueçam com alongamento de lombar e quadril.",
+      "Se doer a coluna ou o joelho, volte para a Borboleta."
+    ],
+    "parecidas": [
+      "borboleta",
+      "missionario"
+    ],
+    "objetivos": [
+      "Desafio físico",
+      "Aventura",
+      "Variedade"
+    ]
+  }
+]

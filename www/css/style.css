@@ -1,0 +1,91 @@
+/* ===== FHOSutra – estilos =====
+   Paleta inspirada nas pinturas em miniatura indianas.
+   Para mudar as cores do app inteiro, edite as variáveis abaixo. */
+:root{--fundo:#2a1130;--card:#3b1b45;--acento:#f0a030;--vermelho:#c8412b;--texto:#fbf1e2;
+      --verde:#2e9e57;--amarelo:#d9a400;--perigo:#d63a3a}
+*{box-sizing:border-box;margin:0}
+body{background:var(--fundo);color:var(--texto);font-family:system-ui,sans-serif;max-width:480px;margin:auto}
+h1,h2,h3{font-family:Georgia,serif;color:var(--acento);font-weight:700}
+h2{margin-bottom:14px;line-height:1.25}
+
+/* Telas e abas (só a que tem .ativa aparece) */
+.tela{display:none;min-height:100dvh;padding:calc(60px + env(safe-area-inset-top)) 20px calc(90px + env(safe-area-inset-bottom))}
+.tela.ativa{display:block}
+.center.ativa{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:18px;padding-bottom:20px}
+.aba{display:none}.aba.ativa{display:block}
+
+/* Logo */
+.lotus{font-size:72px}
+.logo h1{font-size:48px;letter-spacing:1px}.logo h1 span{color:var(--vermelho)}
+.logo p{margin-top:6px;opacity:.8}
+
+/* Botões e campos */
+.btn{border:0;border-radius:14px;background:linear-gradient(135deg,var(--vermelho),#8e2c3f);color:#fff;padding:14px 38px;font:inherit;font-size:18px;cursor:pointer}
+input{width:100%;padding:12px;border-radius:12px;border:1px solid var(--acento);background:var(--card);color:var(--texto);font-size:18px;text-align:center}
+.centro{text-align:center}
+
+/* Questionário */
+.barra{height:6px;background:var(--card);border-radius:3px;margin-bottom:26px}
+.barra i{display:block;width:0;height:100%;background:var(--acento);border-radius:3px;transition:width .3s}
+.opcao{display:block;width:100%;padding:16px;margin:12px 0;border-radius:14px;border:1px solid #5a2d66;background:var(--card);color:var(--texto);font:inherit;text-align:left;cursor:pointer}
+.opcao:active{background:var(--vermelho)}
+
+/* Cartão de posição (lista) */
+.card{display:flex;gap:12px;align-items:center;width:100%;padding:12px;margin:10px 0;border:0;border-radius:16px;background:var(--card);color:inherit;font:inherit;text-align:left;cursor:pointer}
+.card h3{margin-bottom:4px}.card>div:last-child{flex:1}
+.icone{flex:none;width:60px;height:60px;display:grid;place-items:center;font-size:36px;background:#52245c;border-radius:14px;overflow:hidden}
+.icone img{width:100%;height:100%;object-fit:cover}
+.icone.grande{width:100px;height:100px;font-size:60px;margin:0 auto 10px}
+
+/* Barrinhas de dificuldade/flexibilidade: 3 slots; fundo verde/amarelo/vermelho claro */
+.medidor{display:flex;align-items:center;gap:8px;padding:5px 10px;margin:5px 0;border-radius:10px;color:#222;font-size:13px}
+.medidor b{width:92px}.medidor em{margin-left:auto;font-style:normal}
+.slots{display:flex;gap:4px}.slots i{width:22px;height:9px;border-radius:5px;background:rgba(0,0,0,.18)}
+.n1{background:#d6f5df}.n1 .on{background:var(--verde)}
+.n2{background:#fff1bd}.n2 .on{background:var(--amarelo)}
+.n3{background:#ffd5d5}.n3 .on{background:var(--perigo)}
+.card .medidor em{display:none}.card .medidor b{width:84px}
+
+/* Detalhe da posição */
+#detalhe{display:none;position:fixed;inset:0;z-index:9;overflow:auto;background:var(--fundo);padding:calc(60px + env(safe-area-inset-top)) 20px 30px;max-width:480px;margin:auto}
+#detalhe.aberto{display:block}
+#fechar{background:none;border:0;color:var(--acento);font-size:16px;margin-bottom:10px;cursor:pointer}
+.det{text-align:left}.det p,.det li{line-height:1.55;margin:6px 0}.det h3{margin-top:18px}.det ul{padding-left:20px}
+.det h2{text-align:center}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tag{padding:8px 14px;border-radius:20px;border:1px solid var(--acento);background:var(--card);color:var(--acento);font:inherit;cursor:pointer}
+
+/* Roleta */
+.roda-box{position:relative;width:min(80vw,340px);margin:24px auto 16px}
+#roda{width:100%;height:auto;border-radius:50%;border:6px solid var(--acento);transition:transform 5s cubic-bezier(.17,.67,.12,1)}
+.ponteiro{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:30px;color:var(--acento);z-index:2}
+
+/* Timer */
+#timerBox{margin:20px 0;padding:14px;border-radius:16px;background:var(--card);text-align:center}
+.presets{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.presets button{padding:8px 14px;border-radius:10px;border:1px solid var(--acento);background:none;color:var(--acento);font:inherit;cursor:pointer}
+.presets input{width:70px;padding:8px;font-size:16px}
+#relogio{font:700 52px monospace;color:var(--acento)}
+
+/* Menu inferior */
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;display:flex;background:var(--card);padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;padding:14px 4px;border:0;background:none;color:#b79ac0;font:inherit;font-size:13px}
+nav .ativa{color:var(--acento)}
+
+/* Botão voltar, filtros e tags de objetivo */
+#voltar{position:fixed;top:calc(10px + env(safe-area-inset-top));left:max(10px,calc(50% - 230px));z-index:20;padding:8px 14px;border-radius:20px;border:1px solid var(--acento);background:var(--card);color:var(--acento);font:inherit;cursor:pointer}
+.sub{opacity:.85;margin:-6px 0 12px}
+#fNome{text-align:left;font-size:16px}
+.filtros{display:flex;gap:8px;margin:10px 0}
+select{flex:1;min-width:0;padding:10px;border-radius:12px;border:1px solid var(--acento);background:var(--card);color:var(--texto);font:inherit}
+.chip.on,.tag.obj{background:var(--acento);color:#2a1130;font-weight:600}
+#contagem{margin:14px 0 8px;opacity:.8}
+nav button{font-size:12px}
+
+/* Mensagens de erro, opção marcada e campo inválido */
+.erro{width:100%;padding:10px 14px;margin:10px 0;border-radius:10px;border:1px solid var(--perigo);background:rgba(214,58,58,.2);color:#ffb4a8;font-size:15px}
+.shake{animation:tremer .3s}
+@keyframes tremer{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+input.invalido{border-color:var(--perigo)}
+.opcao.sel{background:var(--vermelho);border-color:var(--acento)}
+#btnProximo{display:block;margin:18px auto 0}

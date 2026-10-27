@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a1130">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+<title>FHOSutra</title>
+</head>
+<body>
+<!-- Botão voltar (canto esquerdo superior), controlado pelo JS -->
+<button id="voltar" hidden>← Voltar</button>
+
+<!-- Cada <section class="tela"> é uma tela; o JS mostra uma por vez (função mostrar). -->
+
+<!-- 1) TELA INICIAL: logo + botão Começar -->
+<section id="inicio" class="tela center ativa">
+  <div class="logo"><div class="lotus">🪷</div><h1>FHO<span>Sutra</span></h1><p>Descubra. Conecte-se. Explore.</p></div>
+  <button class="btn" data-ir="nome">Começar</button>
+  <small>Conteúdo para maiores de 18 anos</small>
+</section>
+
+<!-- 2) NOME (só letras; mensagem de erro em #erroNome) -->
+<section id="nome" class="tela center">
+  <h2>Como podemos te chamar?</h2>
+  <input id="inputNome" placeholder="Seu nome" maxlength="30" autocomplete="given-name">
+  <p id="erroNome" class="erro" role="alert" hidden></p>
+  <button class="btn" id="btnNome">Continuar</button>
+</section>
+
+<!-- 3) QUESTIONÁRIO (perguntas vêm de data/quiz.json; avança no botão Próxima) -->
+<section id="quiz" class="tela">
+  <div class="barra"><i id="progresso"></i></div>
+  <h2 id="pergunta"></h2>
+  <div id="opcoes"></div>
+  <p id="erroQuiz" class="erro" role="alert" hidden></p>
+  <button class="btn" id="btnProximo">Próxima</button>
+</section>
+
+<!-- 4) RESULTADO: 3 posições recomendadas -->
+<section id="resultado" class="tela">
+  <h2 id="tituloResultado"></h2>
+  <div id="recomendadas"></div>
+  <button class="btn" data-ir="app">Entrar no app</button>
+</section>
+
+<!-- 5) APP PRINCIPAL com 4 abas. Para criar uma seção nova: copie uma div "aba" e um botão do menu inferior. -->
+<section id="app" class="tela">
+  <!-- ABA INÍCIO: boas-vindas + recomendações do dia -->
+  <div id="aba-inicio" class="aba ativa">
+    <h2 id="saudacao"></h2>
+    <p class="sub">O que acha das recomendações de hoje?</p>
+    <div id="destaques"></div>
+  </div>
+
+  <!-- ABA EXPLORAR: todas as posições + filtros -->
+  <div id="aba-explorar" class="aba">
+    <h2>Explorar</h2>
+    <input id="fNome" placeholder="Buscar pelo nome...">
+    <div class="filtros">
+      <select id="fDif"><option value="0">Dificuldade: todas</option><option value="1">Fácil</option><option value="2">Médio</option><option value="3">Difícil</option></select>
+      <select id="fFlex"><option value="0">Flexibilidade: todas</option><option value="1">Fácil</option><option value="2">Médio</option><option value="3">Difícil</option></select>
+    </div>
+    <h3>O que você procura em uma posição?</h3>
+    <div id="chips" class="tags"></div>
+    <p id="contagem"></p><button class="tag" id="limpar">Limpar filtros</button>
+    <div id="lista"></div>
+  </div>
+
+  <!-- ABA ROLETA -->
+  <div id="aba-roleta" class="aba">
+    <h2>Roleta da Sorte</h2>
+    <div class="roda-box"><span class="ponteiro">▼</span><canvas id="roda" width="400" height="400"></canvas></div>
+    <div class="centro"><button class="btn" id="btnGirar">Girar!</button></div>
+    <div id="timerBox" hidden>
+      <h3>Caiu: <span id="nomeSorteada"></span></h3>
+      <p>Escolha o tempo:</p>
+      <div class="presets">
+        <button data-min="5">5 min</button><button data-min="10">10 min</button>
+        <button data-min="15">15 min</button><button data-min="20">20 min</button>
+        <input id="minCustom" type="number" min="1" max="120" placeholder="min"><button id="btnCustom">OK</button>
+      </div>
+      <div id="relogio">00:00</div>
+      <div class="presets"><button id="btnPausar">Pausar</button><button id="btnZerar">Zerar</button></div>
+    </div>
+    <div id="resultadoRoleta"></div>
+  </div>
+
+  <!-- ABA O QUE É O KAMASUTRA? -->
+  <div id="aba-sobre" class="aba det">
+    <h2>O que é o Kamasutra?</h2>
+    <p>O Kama Sutra é um texto clássico indiano escrito em sânscrito, atribuído ao filósofo Vatsyayana (Mallanaga Vatsyayana). Foi compilado há cerca de 1.700 a 2.000 anos, e as datas exatas variam entre os estudiosos. O nome junta <em>kama</em> (desejo, prazer, afeto) e <em>sutra</em> (fio, ou conjunto de aforismos).</p>
+    <p>Ao contrário da fama popular, ele não é só um guia sexual: as posições ocupam uma parte pequena da obra. O restante fala de como viver bem: relações, cortejo, convivência, etiqueta, comunicação e o cultivo de artes como música, poesia, dança e pintura. Em obras de arte indianas, como pinturas em miniatura e esculturas de templos, o tema do amor aparece como celebração da vida.</p>
+    <p>No fundo, é um caminho de autoconhecimento: entender o que você sente, o que deseja e quais são seus limites. Esse descobrimento pessoal melhora a relação consigo mesmo e, em casal, a confiança, o diálogo e o consentimento, que são a base de qualquer experiência boa.</p>
+    <p><small>O FHOSutra é um app educativo para adultos. Respeite sempre os limites do outro e os seus.</small></p>
+    <button class="btn" id="btnRefazer">Refazer questionário</button>
+  </div>
+
+  <!-- Menu inferior: um botão por aba (data-aba = final do id da aba) -->
+  <nav>
+    <button data-aba="inicio" class="ativa">🏠 Início</button>
+    <button data-aba="explorar">🔎 Explorar</button>
+    <button data-aba="roleta">🎡 Roleta</button>
+    <button data-aba="sobre">🪷 O que é?</button>
+  </nav>
+</section>
+
+<!-- Tela de detalhe de uma posição (abre por cima de tudo) -->
+<div id="detalhe"><div id="detalheConteudo"></div></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
