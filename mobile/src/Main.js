@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { BackHandler, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import { useAudioPlayer } from 'expo-audio';
 import POS from './data/positions.json';
 import QUIZ from './data/quiz.json';
 import { Btn, Card, Detalhe, Erro, H1, H2, H3, NIVEL, P, Tag } from './components';
@@ -44,6 +45,7 @@ export default function Main() {
   const [inputNome, setInputNome] = useState('');
   const [erroNome, setErroNome] = useState({ msg: '', tick: 0 });
   const [nomeInvalido, setNomeInvalido] = useState(false);
+  const somNome = useAudioPlayer(require('../assets/sons/nome.mp3'));   // toca ao confirmar o nome
   const [i, setI] = useState(0);                         // pergunta atual
   const [respostas, setRespostas] = useState([]);
   const [erroQuiz, setErroQuiz] = useState({ msg: '', tick: 0 });
@@ -93,6 +95,7 @@ export default function Main() {
     if (!n) { setNomeInvalido(true); return erro(setErroNome, 'Erro: digite seu nome para continuar.'); }
     if (!SO_LETRAS.test(n)) { setNomeInvalido(true); return erro(setErroNome, 'Erro: o nome deve ter apenas letras.'); }
     erro(setErroNome, ''); setNome(n); setI(0); setRespostas([]); mostrar('quiz');
+    somNome.seekTo(0); somNome.play();
   }
 
   /* ---------- Questionário ---------- */

@@ -5,6 +5,9 @@
         'img/conchinha.png': require('../assets/img/conchinha.png'),
    3) em data/positions.json preencha "imagem": "img/conchinha.png"
    Também funciona colocar uma URL (https://...) direto no campo "imagem".
-   Vazio = usa o emoji de "icone". */
+   Vazio = usa o emoji de "icone".
+   O campo "foto" funciona igual (ex.: "img/posicoes/posicao_cachorrinho.jpg")
+   e mostra a imagem grande abaixo de "Como executar". */
 export default {
+  'img/posicoes/posicao_cachorrinho.jpg': require('../assets/img/posicoes/posicao_cachorrinho.jpg'),
 };

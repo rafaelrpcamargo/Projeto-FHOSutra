@@ -69,6 +69,14 @@ export function Icone({ p, grande }) {
   );
 }
 
+// Imagem grande da posição (campo "foto"), mostrada abaixo de "Como executar"
+export function Foto({ p }) {
+  const fonte = p.foto ? (p.foto.startsWith('http') ? { uri: p.foto } : IMAGENS[p.foto]) : null;
+  if (!fonte) return null;
+  const tam = fonte.uri ? null : Image.resolveAssetSource(fonte);   // mantém a proporção original da imagem
+  return <Image source={fonte} style={[s.foto, { aspectRatio: tam ? tam.width / tam.height : 16 / 9 }]} resizeMode="contain" />;
+}
+
 export function Card({ p, onPress }) {
   return (
     <Pressable onPress={() => onPress(p.id)} style={({ pressed }) => [s.card, pressed && { opacity: 0.85 }]}>
@@ -93,6 +101,7 @@ export function Detalhe({ p, porId, abrirPos, abrirObjetivo }) {
       <P>{p.descricao}</P>
       <H3>Como executar</H3>
       <P>{p.como}</P>
+      <Foto p={p} />
       <H3>Dicas para facilitar</H3>
       {p.dicas.map((d, k) => <P key={k}>•  {d}</P>)}
       <H3>Objetivos da posição</H3>
@@ -126,5 +135,6 @@ export const s = StyleSheet.create({
   slot: { width: 22, height: 9, borderRadius: 5, backgroundColor: 'rgba(0,0,0,0.18)' },
   icone: { width: 60, height: 60, borderRadius: 14, backgroundColor: C.iconeFundo, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   iconeGrande: { width: 100, height: 100, alignSelf: 'center', marginBottom: 10 },
+  foto: { width: '100%', borderRadius: 14, marginVertical: 12 },
   card: { flexDirection: 'row', gap: 12, alignItems: 'center', padding: 12, marginVertical: 6, borderRadius: 16, backgroundColor: C.card },
 });

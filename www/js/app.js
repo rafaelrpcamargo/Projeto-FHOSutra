@@ -75,6 +75,7 @@ const NIVEL = ['', 'Fácil', 'Médio', 'Difícil'];
 // Barrinha com 3 slots: nível 1 = verde, 2 = amarelo, 3 = vermelho (cores no CSS: .n1 .n2 .n3)
 const medidor = (rotulo, n) => `<div class="medidor n${n}"><b>${rotulo}</b><span class="slots">${[1, 2, 3].map(i => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</span><em>${NIVEL[n]}</em></div>`;
 // Se "imagem" estiver preenchida no JSON usa a foto, senão usa o emoji
+// "foto" (opcional) é a imagem grande mostrada abaixo de "Como executar" no detalhe
 const icone = p => p.imagem ? `<img src="${p.imagem}" alt="${p.nome}">` : `<span>${p.icone}</span>`;
 
 const cardHTML = p => `<button class="card" data-pos="${p.id}"><div class="icone">${icone(p)}</div>
@@ -83,6 +84,7 @@ const cardHTML = p => `<button class="card" data-pos="${p.id}"><div class="icone
 const detalheHTML = p => `<div class="det"><div class="icone grande">${icone(p)}</div><h2>${p.nome}</h2>
   ${medidor('Dificuldade', p.dificuldade)}${medidor('Flexibilidade', p.flexibilidade)}
   <p>${p.descricao}</p><h3>Como executar</h3><p>${p.como}</p>
+  ${p.foto ? `<img class="foto" src="${p.foto}" alt="Posição ${p.nome}">` : ''}
   <h3>Dicas para facilitar</h3><ul>${p.dicas.map(d => `<li>${d}</li>`).join('')}</ul>
   <h3>Objetivos da posição</h3><div class="tags">${p.objetivos.map(o => `<button class="tag obj" data-obj="${o}">${o}</button>`).join('')}</div>
   <h3>Posições parecidas</h3><div class="tags">${p.parecidas.map(id => `<button class="tag" data-pos="${id}">${porId(id).nome}</button>`).join('')}</div></div>`;
@@ -146,6 +148,7 @@ $('#btnNome').onclick = () => {
   if (!SO_LETRAS.test(n)) { campo.classList.add('invalido'); return erro($('#erroNome'), 'Erro: o nome deve ter apenas letras.'); }
   campo.classList.remove('invalido'); erro($('#erroNome'), '');
   estado.nome = n;
+  tocar(SOM_NOME);
   estado.i = 0; estado.respostas = [];
   mostrar('quiz'); pergunta();
 };
@@ -194,6 +197,16 @@ $('#btnRefazer').onclick = () => { estado.nome = ''; $('#inputNome').value = '';
 const CORES = ['#7b1e4d', '#c8412b', '#b8731b', '#4a1a5c', '#8e2c3f'];
 let giro = 0, girando = false, sorteada = null;
 
+// Sons da roleta: um ao girar e um por dificuldade (1 fácil, 2 médio, 3 difícil)
+const SOM_GIRO = new Audio('sons/roleta_prazer.mp3');
+const SOM_NOME = new Audio('sons/nome.mp3');   // ao confirmar o nome
+const SONS_DIF = { 1: new Audio('sons/facil.mp3'), 2: new Audio('sons/mediano.mp3'), 3: new Audio('sons/dificil.mp3') };
+function tocar(som) {
+  if (!som) return;
+  som.currentTime = 0;
+  som.play().catch(() => {});   // ignora bloqueio de autoplay do navegador
+}
+
 function desenharRoleta() {
   const c = $('#roda'), x = c.getContext('2d'), n = POS.length, a = 2 * Math.PI / n, R = c.width / 2;
   POS.forEach((p, i) => {
@@ -208,12 +221,14 @@ function desenharRoleta() {
 $('#btnGirar').onclick = () => {
   if (girando) return;
   girando = true; zerarTimer(); $('#timerBox').hidden = true; $('#resultadoRoleta').innerHTML = '';
+  tocar(SOM_GIRO);
   const n = POS.length, fatia = 360 / n, i = Math.floor(Math.random() * n);
   const alvo = 360 - (i + 0.5) * fatia;                // ângulo que leva a fatia i até o ponteiro (topo)
   giro += 360 * 5 + ((alvo - giro % 360) + 360) % 360; // 5 voltas + ajuste fino
   $('#roda').style.transform = `rotate(${giro}deg)`;
   $('#roda').addEventListener('transitionend', () => {
     girando = false; sorteada = POS[i];
+    SOM_GIRO.pause(); tocar(SONS_DIF[sorteada.dificuldade]);
     $('#nomeSorteada').textContent = sorteada.nome; $('#timerBox').hidden = false;
     $('#resultadoRoleta').innerHTML = detalheHTML(sorteada);   // fica na tela até girar de novo
   }, { once: true });

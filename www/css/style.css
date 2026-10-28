@@ -52,6 +52,7 @@ input{width:100%;padding:12px;border-radius:12px;border:1px solid var(--acento);
 #fechar{background:none;border:0;color:var(--acento);font-size:16px;margin-bottom:10px;cursor:pointer}
 .det{text-align:left}.det p,.det li{line-height:1.55;margin:6px 0}.det h3{margin-top:18px}.det ul{padding-left:20px}
 .det h2{text-align:center}
+.det img.foto{display:block;width:100%;height:auto;margin:12px 0;border-radius:14px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .tag{padding:8px 14px;border-radius:20px;border:1px solid var(--acento);background:var(--card);color:var(--acento);font:inherit;cursor:pointer}
 

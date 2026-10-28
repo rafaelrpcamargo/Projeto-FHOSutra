@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, Easing, Platform, Pressable, StyleSheet, Text, TextInput, Vibration, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
+import { setAudioModeAsync, useAudioPlayer } from 'expo-audio';
 import { Btn, Detalhe, H2, H3, P } from './components';
 import { C, CORES_ROLETA } from './theme';
 
@@ -17,8 +18,23 @@ function fatiaPath(i, n) {
   return `M ${R} ${R} L ${x1} ${y1} A ${r} ${r} 0 ${a > Math.PI ? 1 : 0} 1 ${x2} ${y2} Z`;
 }
 
+// Toca do começo (o player guarda a posição onde parou)
+function tocar(player) {
+  if (!player) return;
+  player.seekTo(0);
+  player.play();
+}
+
 export default function Roleta({ POS, porId, abrirPos, abrirObjetivo }) {
   const rot = useRef(new Animated.Value(0)).current;
+
+  // ----- Sons: um ao girar e um por dificuldade (1 fácil, 2 médio, 3 difícil) -----
+  const somGiro = useAudioPlayer(require('../assets/sons/roleta_prazer.mp3'));
+  const somFacil = useAudioPlayer(require('../assets/sons/facil.mp3'));
+  const somMedio = useAudioPlayer(require('../assets/sons/mediano.mp3'));
+  const somDificil = useAudioPlayer(require('../assets/sons/dificil.mp3'));
+  const sonsDif = { 1: somFacil, 2: somMedio, 3: somDificil };
+  useEffect(() => { setAudioModeAsync({ playsInSilentMode: true }).catch(() => {}); }, []);
   const giro = useRef(0);
   const [girando, setGirando] = useState(false);
   const [sorteada, setSorteada] = useState(null);
@@ -57,12 +73,16 @@ export default function Roleta({ POS, porId, abrirPos, abrirObjetivo }) {
   function girar() {
     if (girando) return;
     setGirando(true); zerarTimer(); setSorteada(null);
+    tocar(somGiro);
     const n = POS.length, fatia = 360 / n, i = Math.floor(Math.random() * n);
     const alvo = 360 - (i + 0.5) * fatia;                         // ângulo que leva a fatia i até o ponteiro (topo)
     giro.current += 360 * 5 + ((alvo - giro.current % 360) + 360) % 360;   // 5 voltas + ajuste fino
     Animated.timing(rot, {
       toValue: giro.current, duration: 5000, easing: Easing.bezier(0.17, 0.67, 0.12, 1), useNativeDriver: true,
-    }).start(() => { setGirando(false); setSorteada(POS[i]); });
+    }).start(() => {
+      setGirando(false); setSorteada(POS[i]);
+      somGiro.pause(); tocar(sonsDif[POS[i].dificuldade]);
+    });
   }
 
   const n = POS.length, fatiaGraus = 360 / n;
