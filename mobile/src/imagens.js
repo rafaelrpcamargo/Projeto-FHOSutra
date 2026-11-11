@@ -10,4 +10,13 @@
    e mostra a imagem grande abaixo de "Como executar". */
 export default {
   'img/posicoes/posicao_cachorrinho.jpg': require('../assets/img/posicoes/posicao_cachorrinho.jpg'),
+  'img/posicoes/lotus.jpg': require('../assets/img/posicoes/lotus.jpg'),
+  'img/posicoes/missionario.jpg': require('../assets/img/posicoes/missionario.jpg'),
+  'img/posicoes/cavalgada.jpg': require('../assets/img/posicoes/cavalgada.jpg'),
+  'img/posicoes/borboleta.jpg': require('../assets/img/posicoes/borboleta.jpg'),
+  'img/posicoes/cadeira.jpg': require('../assets/img/posicoes/cadeira.jpg'),
+  'img/posicoes/tesoura.jpg': require('../assets/img/posicoes/tesoura.jpg'),
+  'img/posicoes/parede.jpg': require('../assets/img/posicoes/parede.jpg'),
+  'img/posicoes/conchinha.jpg': require('../assets/img/posicoes/conchinha.jpg'),
+  'img/posicoes/arco.jpg': require('../assets/img/posicoes/arco.jpg'),
 };

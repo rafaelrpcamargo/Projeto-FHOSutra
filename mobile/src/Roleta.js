@@ -28,18 +28,18 @@ function tocar(player) {
 export default function Roleta({ POS, porId, abrirPos, abrirObjetivo }) {
   const rot = useRef(new Animated.Value(0)).current;
 
-  // ----- Sons: um ao girar e um por dificuldade (1 fácil, 2 médio, 3 difícil) -----
   const somGiro = useAudioPlayer(require('../assets/sons/roleta_prazer.mp3'));
   const somFacil = useAudioPlayer(require('../assets/sons/facil.mp3'));
   const somMedio = useAudioPlayer(require('../assets/sons/mediano.mp3'));
   const somDificil = useAudioPlayer(require('../assets/sons/dificil.mp3'));
   const sonsDif = { 1: somFacil, 2: somMedio, 3: somDificil };
+  const somFim = useAudioPlayer(require('../assets/sons/fim.wav'));   // bipe quando o timer acaba
   useEffect(() => { setAudioModeAsync({ playsInSilentMode: true }).catch(() => {}); }, []);
   const giro = useRef(0);
   const [girando, setGirando] = useState(false);
   const [sorteada, setSorteada] = useState(null);
-
-  // ----- Timer -----
+ 
+  //config do timer
   const [restante, setRestante] = useState(0);
   const [pausado, setPausado] = useState(false);
   const [fim, setFim] = useState(false);
@@ -63,7 +63,7 @@ export default function Roleta({ POS, porId, abrirPos, abrirObjetivo }) {
     }, 1000);
   }
   function zerarTimer() { pararIntervalo(); setRestante(0); setPausado(false); pausadoRef.current = false; setFim(false); }
-  function fimDoTempo() { Vibration.vibrate([0, 300, 150, 300]); setFim(true); }
+  function fimDoTempo() { Vibration.vibrate([0, 300, 150, 300]); tocar(somFim); setFim(true); }
   function alternarPausa() { pausadoRef.current = !pausadoRef.current; setPausado(pausadoRef.current); }
 
   const relogio = fim ? 'Tempo!'
@@ -90,7 +90,7 @@ export default function Roleta({ POS, porId, abrirPos, abrirObjetivo }) {
 
   return (
     <View>
-      <H2>Roleta da Sorte</H2>
+      <H2>Roleta do prazer</H2>
       <View style={st.rodaBox}>
         <Text style={st.ponteiro}>▼</Text>
         <Animated.View style={[st.roda, { transform: [{ rotate }] }]}>
