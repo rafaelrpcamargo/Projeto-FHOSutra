@@ -33,7 +33,8 @@ function aba(nome) {
   document.querySelectorAll('nav button').forEach(b => b.classList.toggle('ativa', b.dataset.aba === nome));
   window.scrollTo(0, 0); atualizarVoltar();
 }
-function entrarNoApp() { desenharInicio(); detalhes = []; $('#detalhe').classList.remove('aberto'); mostrar('app'); aba('inicio'); }
+function entrarNoApp() { desenharInicio(); detalhes = []; $('#detalhe').classList.remove('aberto'); mostrar('app'); aba('inicio'); $('#anuncio').hidden = false; }
+$('#fecharAnuncio').onclick = () => { $('#anuncio').hidden = true; };   // fecha o anúncio
 
 // O botão ← Voltar só aparece quando existe um "passo anterior"
 function atualizarVoltar() {

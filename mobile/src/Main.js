@@ -1,7 +1,7 @@
 /* ===== FHOSutra – lógica do app (versão React Native / Expo) =====
    Dados editáveis ficam em src/data/positions.json e src/data/quiz.json. */
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { BackHandler, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { BackHandler, Image, KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { useAudioPlayer } from 'expo-audio';
@@ -16,6 +16,9 @@ const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase
 const SO_LETRAS = /^\p{L}+( \p{L}+)*$/u;                     // só letras (com acento), palavras separadas por espaço
 const OBJETIVOS = [...new Set(POS.flatMap(p => p.objetivos))].sort();
 const ABAS = [['inicio', '🏠 Início'], ['explorar', '🔎 Explorar'], ['roleta', '🎡 Roleta'], ['sobre', '🪷 O que é?']];
+// Foto do anúncio (pop-up) ao entrar no app. Para trocar, substitua assets/img/anuncio.jpg
+const FOTO_ANUNCIO = require('../assets/img/anuncio.jpg');
+const TAM_ANUNCIO = Image.resolveAssetSource(FOTO_ANUNCIO);
 
 /* Recomendação: compara o perfil (média das respostas por eixo, 0 a 1) com cada posição.
    Quanto menor a distância, mais combina. A dificuldade pesa 2x para proteger iniciantes. */
@@ -51,6 +54,7 @@ export default function Main() {
   const [erroQuiz, setErroQuiz] = useState({ msg: '', tick: 0 });
   const [detalhes, setDetalhes] = useState([]);          // pilha de posições abertas
   const [filtro, setFiltro] = useState({ texto: '', dif: 0, flex: 0, obj: [] });
+  const [anuncio, setAnuncio] = useState(false);          // pop-up ao entrar no app
   const scroll = useRef(null);
   const scrollDet = useRef(null);
 
@@ -65,7 +69,7 @@ export default function Main() {
     if (detalhes.length) setDetalhes(d => d.slice(0, -1));          // 1) fecha a posição aberta (ou volta para a anterior)
     else if (tela === 'app') irAba('inicio');                        // 2) de qualquer aba volta ao Início
     else if (tela === 'resultado') mostrar('quiz');                   // 3) volta à última pergunta
-    else if (tela === 'quiz') { if (i === 0) mostrar('nome'); else setI(i - 1); }   // ...ou à anterior
+    else if (tela === 'quiz') { erro(setErroQuiz, ''); if (i === 0) mostrar('nome'); else setI(i - 1); }   // ...ou à anterior
     else if (tela === 'nome') mostrar('inicio');
   }
   useEffect(() => {
@@ -148,7 +152,7 @@ export default function Main() {
     <View>
       <H2>{nome}, essas são 3 posições recomendáveis para você iniciar sua aventura no FHO Sutra</H2>
       {recomendadas.map(p => <Card key={p.id} p={p} onPress={abrirPos} />)}
-      <Btn titulo="Entrar no app" onPress={() => { setDetalhes([]); setAba('inicio'); mostrar('app'); }} style={{ marginTop: 14 }} />
+      <Btn titulo="Entrar no app" onPress={() => { setDetalhes([]); setAba('inicio'); mostrar('app'); setAnuncio(true); }} style={{ marginTop: 14 }} />
     </View>
   );
   else if (aba === 'inicio') conteudo = (
@@ -175,7 +179,7 @@ export default function Main() {
         : <P>Nenhuma posição encontrada. Tente limpar os filtros.</P>}
     </View>
   );
-  else if (aba === 'roleta') conteudo = <Roleta POS={POS} porId={porId} abrirPos={abrirPos} abrirObjetivo={abrirObjetivo} />;
+  else if (aba === 'roleta') conteudo = null;   // a Roleta fica sempre montada (veja abaixo)
   else conteudo = (
     <View>
       <H2>O que é o Kamasutra?</H2>
@@ -197,6 +201,11 @@ export default function Main() {
         <ScrollView ref={scroll} contentContainerStyle={[st.pagina, centralizada && { flexGrow: 1, justifyContent: 'center' }]}
           keyboardShouldPersistTaps="handled">
           {conteudo}
+          {/* Roleta sempre montada (só escondida), igual ao web: a posição sorteada e o timer
+              continuam valendo ao trocar de aba, até girar de novo */}
+          <View style={!(tela === 'app' && aba === 'roleta') && { display: 'none' }}>
+            <Roleta POS={POS} porId={porId} abrirPos={abrirPos} abrirObjetivo={abrirObjetivo} />
+          </View>
         </ScrollView>
 
         {/* Menu inferior: um botão por aba */}
@@ -224,6 +233,21 @@ export default function Main() {
           <Pressable style={st.voltar} onPress={voltar}><Text style={{ color: C.acento, fontSize: 15 }}>← Voltar</Text></Pressable>
         )}
       </KeyboardAvoidingView>
+
+      {/* Anúncio (pop-up) ao entrar no app: fecha no ✕ ou no botão voltar do Android */}
+      <Modal visible={anuncio} transparent animationType="fade" onRequestClose={() => setAnuncio(false)}>
+        <View style={st.anuncioFundo}>
+          <View style={st.anuncioArea}>
+            <View style={st.anuncioBox}>
+              <Image source={FOTO_ANUNCIO} style={{ width: '100%', aspectRatio: TAM_ANUNCIO.width / TAM_ANUNCIO.height, borderRadius: 10 }} resizeMode="cover" />
+              <Text style={st.anuncioTxt}>Mulher solteira a 1h de você</Text>
+            </View>
+            <Pressable style={st.anuncioFechar} onPress={() => setAnuncio(false)} hitSlop={10} accessibilityLabel="Fechar anúncio">
+              <Text style={{ color: C.acento, fontSize: 18 }}>✕</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -263,5 +287,10 @@ const st = StyleSheet.create({
   nav: { flexDirection: 'row', backgroundColor: C.card },
   navBtn: { flex: 1, paddingVertical: 14, paddingHorizontal: 2, alignItems: 'center' },
   navTxt: { color: C.navInativo, fontSize: 12 },
+  anuncioFundo: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20, backgroundColor: 'rgba(0,0,0,0.75)' },
+  anuncioArea: { width: '100%', maxWidth: 368, padding: 14 },   // margem para o ✕ ficar inteiro dentro da área de toque
+  anuncioBox: { padding: 12, borderWidth: 2, borderColor: C.acento, borderRadius: 16, backgroundColor: C.card },
+  anuncioTxt: { marginTop: 10, color: '#ff1a1a', fontWeight: '700', fontSize: 22, textAlign: 'center' },
+  anuncioFechar: { position: 'absolute', top: 0, right: 0, width: 36, height: 36, borderRadius: 18, borderWidth: 2, borderColor: C.acento, backgroundColor: C.fundo, alignItems: 'center', justifyContent: 'center' },
   voltar: { position: 'absolute', top: 10, left: 10, zIndex: 20, paddingVertical: 8, paddingHorizontal: 14, borderRadius: 20, borderWidth: 1, borderColor: C.acento, backgroundColor: C.card },
 });
